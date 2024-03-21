@@ -1,0 +1,148 @@
+
+/* Step 1：Add animation to the logo */
+
+@keyframes logo_move {
+    from {width: 25px; opacity: 0}
+    to {width: 475px; opacity: 1}
+  }
+#logo {
+    animation: logo_move 5s forwards;
+}
+
+
+/* Step 2: change the background image & color and font of body */
+
+body {
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Step 3: edit the header's flex style */
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 4: edit the navigation links */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Step 5 */
+/*Style the links so that they have the same color even after they have been visited.*/
+
+.nav_links a:visited{
+    color: blue;
+}
+
+/* Step 6: edit the style of the header elements that are direct children of a card class. */
+
+.card > header {
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Step 7 & 8 */
+/* Style the card class and the pricing class. */
+
+.card {
+    border-radius: 50px 50px 0 0;
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+}
+
+.pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Step 9: style the gallery class. Add border and margin, change the width of img. */
+.gallery img{
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step 10: edit the gallery class's flex style. */
+.gallery {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* For screen sizes larger than 900px */
+@media only screen and (min-width: 900px) {
+    /* Step 11: edit the header and navigation link style */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .nav_links {
+        flex-direction: row;
+    }
+    /* Step 12: edit the pricing and card class. */
+    .pricing {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .card {
+        width: 275px;
+    }
+    /* Step 13: let the first header sticky on the top of the screen. */
+    body > header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+    }
+}
+
+/* for print view */
+@media print {
+    /* change the background and font of the body */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    /* edit the navigation links */
+    nav {
+        width: 100%;
+    }
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    /* let the elements in the pricing class align along the bottom. */
+    .pricing {
+       flex-direction: row;
+       align-items: flex-end;
+    }
+    /* add the border to card and change the width of the card. */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+    /* hide the gallery content. */
+    .gallery, #gallery {
+        display: none;
+    }
+    /* add the thumbs up entity to the second list item. */
+    .card li:nth-child(2):after {
+        content: '\1f44d';
+    }
+}
